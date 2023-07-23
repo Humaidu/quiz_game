@@ -1,0 +1,98 @@
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.quiz-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -80px;
+}
+
+.quiz-title h2 {
+  color: var(--primary-color);
+}
+
+.btn button {
+  background-color: var(--primary-color);
+  color: #fff;
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.image-svg svg {
+  position: relative;
+  top: -80px;
+}
+
+#online-test {
+  animation: bounce 1s infinite linear;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#plant,
+#person {
+  animation: rotate 1s infinite linear;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(10deg);
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .quiz-card {
+    text-align: center;
+    position: relative;
+    top: -40px;
+  }
+  .image-svg svg {
+    position: relative;
+    top: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-card {
+    text-align: center;
+    position: relative;
+    top: -20px;
+  }
+
+  .image-svg svg {
+    position: relative;
+    top: -20px;
+  }
+
+  .quiz-title h2 {
+    font-size: 17px;
+  }
+
+  .btn button {
+    height: 35px;
+    width: 85px;
+    font-size: 14px;
+  }
+}
