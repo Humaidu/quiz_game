@@ -1,0 +1,51 @@
+.container{
+    position: relative;
+    width: 60%;
+    height: 200px;
+    padding: 10px 25px;
+    margin: 10vh auto;
+    background: #e6eae9;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .welcome h1{
+    color: var(--primary-color);
+  }
+
+  .welcome button{
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 17px;
+    border: 2px solid var(--primary-color);
+    background-color: #e6eae9;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .quiz{
+    position: relative;
+    width: 60%;
+    margin: 10vh auto;
+    top: -50px;
+    right: 20px;
+  }
+
+  .quiz h2{
+    color: var(--primary-color);
+    font-size: 20px;
+  }
+
+
+  @media only screen and (max-width : 500px) {
+    .container{ 
+        width: 70%;
+        height:150px;
+    }
+    .welcome h1{
+        font-size: 23px;
+    }
+  }
+  
+  
