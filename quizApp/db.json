@@ -1,0 +1,22 @@
+{
+  "signupUsers": [
+    {
+      "id": 1,
+      "fullname": "Humaidu Ali",
+      "email": "h@gmail.com",
+      "password": "1234"
+    },
+    {
+      "fullname": "Hash Ali",
+      "email": "humaiduali@gmail.com",
+      "password": "12345678",
+      "id": 2
+    },
+    {
+      "fullname": "Humaidu Ali",
+      "email": "humaiduali@gmail.com",
+      "password": "12345678",
+      "id": 3
+    }
+  ]
+}

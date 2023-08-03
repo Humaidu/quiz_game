@@ -1,10 +1,10 @@
 <div class="container">
   <div class="form">
-    <form action="">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
       <h1>Login</h1>
-      <input type="email" class="user" placeholder="Email" />
-      <input type="password" class="pass" placeholder="Password" />
-      <button class="login">Login</button>
+      <input type="email" class="user" placeholder="Email" formControlName="email" />
+      <input type="password" class="pass" placeholder="Password" formControlName="password" />
+      <button class="login" type="submit">Login</button>
       <small
         >Dont you have an account?<span
           style="color: var(--primary-color)"
