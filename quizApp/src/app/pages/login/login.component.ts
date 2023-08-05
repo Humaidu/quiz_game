@@ -26,29 +26,6 @@ export class LoginComponent {
   login() {
     this.loginData = this.loginForm.value;
     this.userService.login(this.loginData)
-    // this.userService.login().subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //     const user = res.find((a: any) => {
-    //       return (
-    //         a.email === this.loginData.email &&
-    //         a.password === this.loginData.password
-    //       );
-    //     });
-    //     if (user) {
-    //       localStorage.setItem(this.tokenKey, user);
-    //       this.router.navigate(['/dashboard']);
-    //       alert('Login successful');
-    //     } else {
-    //       localStorage.setItem(this.tokenKey, user)
-    //       alert('User Not Found');
-    //     }
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //     alert('Something went wrong');
-    //   }
-    // );
     this.loginForm.reset();
   }
 

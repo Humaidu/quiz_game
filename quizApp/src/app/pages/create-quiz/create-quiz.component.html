@@ -1,13 +1,13 @@
 <div class="container">
     <div class="form">
-      <form action="">
+      <form [formGroup]="quizForm" (ngSubmit)="createQuizData()">
         <h1>Create New Quiz </h1>
-        <input type="text" class="user" placeholder="Quiz Title" />
-        <textarea rows="10" cols="20" placeholder="Description"></textarea>
-        <input type="text" class="user" placeholder="Category" />
-        <input type="text" class="user" placeholder="Duration" />
+        <input type="text" class="user" placeholder="Quiz Title" formControlName="quiz_title" />
+        <textarea rows="10" cols="20" placeholder="Description" formControlName="description" ></textarea>
+        <input type="text" class="user" placeholder="Category" formControlName="category" />
+        <input type="number" class="user" placeholder="Duration" formControlName="duration" />
         
-        <button class="login">Create</button>
+        <button class="login" type="submit">Create</button>
       </form>
     </div>
   </div>

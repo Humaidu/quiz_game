@@ -18,5 +18,42 @@
       "password": "12345678",
       "id": 3
     }
+  ],
+  "quizzes": [
+    {
+      "id": 1,
+      "quiz_title": "python quiz",
+      "description": "python multiple choise quiz",
+      "category": "easy",
+      "duration": 30,
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is 2 + 2?",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "answer": "4"
+        }
+      ]
+    },
+    {
+      "quiz_title": "Angular Quiz",
+      "description": "Angular quiz multiple choice",
+      "category": "easy",
+      "duration": 30000,
+      "question": {
+        "question": "Choose the filter which is used to convert the input to all uppercase\n\n\n\n\n\n\n",
+        "optionA": "toUpper",
+        "optionB": "uppercase",
+        "optionC": "upper",
+        "optionD": "none of the above",
+        "answer": "uppercase"
+      },
+      "id": 2
+    }
   ]
 }

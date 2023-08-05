@@ -13,6 +13,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { AddQuestionsComponent } from './pages/add-questions/add-questions.component';
+import { QuizDetailsComponent } from './pages/quiz-details/quiz-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddQuestionsComponent } from './pages/add-questions/add-questions.compo
     SignupComponent,
     DashboardComponent,
     CreateQuizComponent,
-    AddQuestionsComponent
+    AddQuestionsComponent,
+    QuizDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@
     background-color: #e6eae9;
     color: var(--primary-color);
     font-weight: 500;
+    cursor: pointer;
   }
 
   .quiz{
@@ -36,7 +37,17 @@
     color: var(--primary-color);
     font-size: 20px;
   }
-
+  
+  .quiz a{
+    text-decoration: none;
+    font-weight: 500;
+    /* color: var(--secondary-color); */
+    color: #2470c7;
+    margin-left: -40px;
+  }
+  .quiz ul, li{
+    list-style: none;
+  }
 
   @media only screen and (max-width : 500px) {
     .container{ 

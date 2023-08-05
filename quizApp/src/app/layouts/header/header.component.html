@@ -8,6 +8,7 @@
     </div>
     <ul class="menu-items">
       <li><a routerLink="/">Home</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="/dashboard">Dashboard</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
       <li *ngIf="isLoggedIn"><a href="">{{email}}</a></li>
       <li *ngIf="isLoggedIn"><a (click)="logout()">logout</a></li>

@@ -7,15 +7,17 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { AddQuestionsComponent } from './pages/add-questions/add-questions.component';
 import { authGuard } from './shared/auth.guard';
+import { QuizDetailsComponent } from './pages/quiz-details/quiz-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
-  { path: 'create', component: CreateQuizComponent, canActivate: [authGuard]},
-  { path: 'add-question', component: AddQuestionsComponent}
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'create', component: CreateQuizComponent},
+  { path: 'add-question', component: AddQuestionsComponent},
+  {path: 'quiz-details/:id', component: QuizDetailsComponent},
 ];
 
 @NgModule({

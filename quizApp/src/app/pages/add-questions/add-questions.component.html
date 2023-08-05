@@ -1,22 +1,22 @@
 <div class="container">
   <div class="form">
-    <form action="">
+    <form [formGroup]="questionForm" (ngSubmit)="createQuizAndQuestion()">
       <h1>Add a Question</h1>
-      <textarea rows="10" cols="30" placeholder="Type Question"></textarea>
+      <textarea rows="10" cols="30" placeholder="Type Question" formControlName="question"></textarea>
       <label>Options</label>
       <div class="options">
-        <input type="text" class="user" placeholder="A" />
-        <input type="text" class="user" placeholder="B" />
-        <input type="text" class="user" placeholder="C" />
-        <input type="text" class="user" placeholder="D" />
+        <input type="text" class="user" placeholder="A" formControlName="optionA" />
+        <input type="text" class="user" placeholder="B" formControlName="optionB" />
+        <input type="text" class="user" placeholder="C" formControlName="optionC" />
+        <input type="text" class="user" placeholder="D" formControlName="optionD" />
       </div>
 
       <label>Answer</label>
       <div>
-        <input type="text" class="user answer" placeholder="Type Answer" />
+        <input type="text" class="user answer" placeholder="Type Answer" formControlName="answer" />
       </div>
 
-      <button class="login">Add Question</button>
+      <button class="login" type="submit">Add Question</button>
     </form>
   </div>
 </div>
