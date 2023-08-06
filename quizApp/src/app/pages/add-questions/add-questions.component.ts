@@ -10,7 +10,13 @@ import { QuizService } from 'src/app/services/quiz.service';
   styleUrls: ['./add-questions.component.css'],
 })
 export class AddQuestionsComponent implements OnInit {
-  questionData: any;
+  question: string ='';
+  optionA: string = '';
+  optionB: string = '';
+  optionC: string = '';
+  optionD: string = '';
+  answer: string = '';
+  options: any = [];
 
   constructor(private quizService: QuizService, private fb: FormBuilder) {}
 
@@ -26,10 +32,24 @@ export class AddQuestionsComponent implements OnInit {
   ngOnInit() {}
 
   createQuizAndQuestion() {
-    this.questionData = this.questionForm.value;
+    this.optionA = this.questionForm.value.optionA?.trim()!;
+    this.optionB = this.questionForm.value.optionB?.trim()!;
+    this.optionC = this.questionForm.value.optionC?.trim()!;
+    this.optionD = this.questionForm.value.optionD?.trim()!;
+    this.answer = this.questionForm.value.answer?.trim()!;
+    this.question = this.questionForm.value.question?.trim()!;
+
+    const optionsData : any = [
+      this.optionA, this.optionB, this.optionC, this.optionD
+    ]
+    const questionData: any = {
+      question: this.question,
+      options: optionsData,
+      answer: this.answer
+    }
     const quizQuestionData: any = {
       ...this.quizService.getQuizData(),
-      question: this.questionData,
+      questions: [questionData]
     };
     this.quizService.createCompleteQuiz(quizQuestionData).subscribe((res) => {
       console.log(res);

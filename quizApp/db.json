@@ -28,7 +28,6 @@
       "duration": 30,
       "questions": [
         {
-          "id": 1,
           "question": "What is 2 + 2?",
           "options": [
             "3",
@@ -41,19 +40,52 @@
       ]
     },
     {
-      "quiz_title": "Angular Quiz",
+      "quiz_title": "Angular quiz",
       "description": "Angular quiz multiple choice",
       "category": "easy",
       "duration": 30000,
-      "question": {
-        "question": "Choose the filter which is used to convert the input to all uppercase\n\n\n\n\n\n\n",
-        "optionA": "toUpper",
-        "optionB": "uppercase",
-        "optionC": "upper",
-        "optionD": "none of the above",
-        "answer": "uppercase"
-      },
+      "questions": [
+        {
+          "question": "what is 2+2?",
+          "options": [
+            "3",
+            "4",
+            "6",
+            "2"
+          ],
+          "answer": "4"
+        }
+      ],
       "id": 2
+    },
+    {
+      "quiz_title": "quiz 3",
+      "description": "testing",
+      "category": "easy",
+      "duration": 30,
+      "questions": [
+        {
+          "question": "what is testing?",
+          "options": [
+            "one",
+            "two",
+            "three",
+            "four"
+          ],
+          "answer": "one"
+        },
+        {
+            "question": "what is testing 2?",
+            "options": [
+              "one",
+              "two",
+              "three",
+              "four"
+            ],
+            "answer": "one"
+          }
+      ],
+      "id": 3
     }
   ]
 }
