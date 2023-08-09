@@ -8,9 +8,10 @@ import { QuizService } from 'src/app/services/quiz.service';
   styleUrls: ['./quiz-details.component.css'],
 })
 export class QuizDetailsComponent implements OnInit {
-  quizId: string = '';
+  quizId: any;
   quiz: any = {};
   answers: any = {};
+  questions: any = {};
   currentQuestionIndex: number = 0;
   score: number = 0;
   alphabets = ['A', 'B', 'C', 'D'];
@@ -28,6 +29,10 @@ export class QuizDetailsComponent implements OnInit {
     }, (err)=>{
       console.error('Error loading quiz:', err);
     });
+
+    this.quizService.getQuestionsByQuiz(this.quizId).subscribe((questions) => {
+      this.questions = questions
+    })
   }
 
   prevQuestion() {
@@ -46,11 +51,11 @@ export class QuizDetailsComponent implements OnInit {
 
   submitQuiz() {
     this.score = 0;
-    this.quiz.questions.forEach((question: any, index: any) => {
+    this.questions.forEach((question: any, index: any) => {
       if (this.answers[index] === question.answer) {
         this.score++;
       }
     });
-    this.currentQuestionIndex = this.quiz.questions.length; 
+    this.currentQuestionIndex = this.questions.length; 
   }
 }

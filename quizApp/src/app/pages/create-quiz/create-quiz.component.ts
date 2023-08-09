@@ -29,9 +29,11 @@ export class CreateQuizComponent implements OnInit {
 
   createQuizData() {
     this.quizData = this.quizForm.value;
-    this.quizService.setQuizData(this.quizData)
-    this.router.navigate(['/add-question']);
-    alert('Quiz Succesfully Created');
+    this.quizService.createQuiz(this.quizData).subscribe((quiz)=>{
+      this.router.navigate(['/add-question', quiz.id]);
+      alert('Quiz Succesfully Created');
+    })
+
     this.quizForm.reset();
   }
 }

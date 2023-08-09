@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'create', component: CreateQuizComponent},
-  { path: 'add-question', component: AddQuestionsComponent},
+  { path: 'add-question/:id', component: AddQuestionsComponent},
   {path: 'quiz-details/:id', component: QuizDetailsComponent},
 ];
 

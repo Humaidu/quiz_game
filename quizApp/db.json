@@ -22,70 +22,129 @@
   "quizzes": [
     {
       "id": 1,
-      "quiz_title": "python quiz",
-      "description": "python multiple choise quiz",
-      "category": "easy",
-      "duration": 30,
-      "questions": [
-        {
-          "question": "What is 2 + 2?",
-          "options": [
-            "3",
-            "4",
-            "5",
-            "6"
-          ],
-          "answer": "4"
-        }
-      ]
+      "quiz_title": "Math Quiz",
+      "description": "Test your math skills!",
+      "duration": 20,
+      "category": "easy"
     },
     {
-      "quiz_title": "Angular quiz",
-      "description": "Angular quiz multiple choice",
-      "category": "easy",
-      "duration": 30000,
-      "questions": [
-        {
-          "question": "what is 2+2?",
-          "options": [
-            "3",
-            "4",
-            "6",
-            "2"
-          ],
-          "answer": "4"
-        }
-      ],
-      "id": 2
+      "id": 2,
+      "quiz_title": "Science Quiz",
+      "description": "Explore the world of science.",
+      "duration": 15,
+      "category": "easy"
     },
     {
-      "quiz_title": "quiz 3",
-      "description": "testing",
+      "quiz_title": "Python Quiz",
+      "description": "multiple choice quiz",
       "category": "easy",
-      "duration": 30,
-      "questions": [
-        {
-          "question": "what is testing?",
-          "options": [
-            "one",
-            "two",
-            "three",
-            "four"
-          ],
-          "answer": "one"
-        },
-        {
-            "question": "what is testing 2?",
-            "options": [
-              "one",
-              "two",
-              "three",
-              "four"
-            ],
-            "answer": "one"
-          }
-      ],
+      "duration": 400,
       "id": 3
+    },
+    {
+      "quiz_title": "Scala Quiz",
+      "description": "scala multiple choice",
+      "category": "easy",
+      "duration": 40,
+      "id": 4
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "quizId": 1,
+      "question": "What is 2 + 2?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": "4"
+    },
+    {
+      "id": 2,
+      "quizId": 1,
+      "question": "Which planet is known as the Red Planet?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "answer": "Mars"
+    },
+    {
+      "id": 3,
+      "quizId": 2,
+      "question": "What is the symbol for hydrogen?",
+      "options": [
+        "H",
+        "O",
+        "He",
+        "C"
+      ],
+      "answer": "H"
+    },
+    {
+      "id": 4,
+      "quizId": 2,
+      "question": "Which gas is essential for photosynthesis?",
+      "options": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon Dioxide",
+        "Argon"
+      ],
+      "answer": "Carbon Dioxide"
+    },
+    {
+      "question": "1+8?",
+      "options": [
+        "6",
+        "8",
+        "9",
+        "7"
+      ],
+      "answer": "9",
+      "quizId": 3,
+      "id": 5
+    },
+    {
+      "question": "5+5?",
+      "options": [
+        "10",
+        "0",
+        "25",
+        "1"
+      ],
+      "answer": "10",
+      "quizId": 3,
+      "id": 6
+    },
+    {
+      "question": "2 + 2?",
+      "options": [
+        "4",
+        "5",
+        "1",
+        "0"
+      ],
+      "answer": "4",
+      "quizId": 4,
+      "id": 7
+    },
+    {
+      "question": "5+ 5?",
+      "options": [
+        "10",
+        "4",
+        "35",
+        "5"
+      ],
+      "answer": "10",
+      "quizId": 4,
+      "id": 8
     }
   ]
 }

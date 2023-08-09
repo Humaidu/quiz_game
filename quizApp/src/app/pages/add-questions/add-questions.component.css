@@ -1,13 +1,55 @@
 .container {
   position: relative;
   width: 50%;
-  height: 580px;
+  height: auto;
   padding: 10px 80px;
   margin: 10vh auto;
   background: var(--tertiary-color);
   border-radius: 10px;
 }
 
+.container-second{
+    min-height: 50vh;
+} 
+
+.container-second h2{
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.container-second p{
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* quiz-questions.component.css */
+
+.quiz-questions {
+    max-width: 50%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .quiz-questions p{
+   text-align: left;
+  }
+
+  .quiz-questions li{
+    list-style: none;
+    /* display: inline; */
+    text-align: left;
+    position: relative;
+    left: -40px;
+  }
+  
+  .single-question{
+    margin-bottom: 20px;
+  }
 .options {
   margin-top: 8px;
   display: flex;

@@ -2,12 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Quiz } from '../models/quiz';
 import { Observable } from 'rxjs';
+import { Question } from '../models/question';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
-  apiUrl: string = 'http://localhost:3000/quizzes';
+  apiUrl: string = 'http://localhost:3000';
   private quizData: any;
 
 
@@ -21,26 +22,36 @@ export class QuizService {
     return this.quizData;
   }
 
-  // saveCompleteQuizData(data: any): Observable<any> {
-  //   // Send HTTP POST request to JSON Server to save complete quiz data
-  //   return this.http.post('http://localhost:3000/quizzes', data);
-  // }
 
-  createCompleteQuiz(quizData: any): Observable<any> {
+  createQuiz(quiz: Quiz): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
 
-    return this.http.post<any>(this.apiUrl, quizData, httpOptions);
+    return this.http.post<any>(`${this.apiUrl}/quizzes`, quiz, httpOptions);
+  }
+
+  createQuestiion(question: Question, quizId: number): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this.http.post<any>(`${this.apiUrl}/questions`, { ...question, quizId}, httpOptions);
   }
 
   getAllQuizzes(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(`${this.apiUrl}/quizzes`);
   }
 
   getQuizById(quizId:any): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/quizzes/${quizId}`);
+    return this.http.get<any>(`${this.apiUrl}/quizzes/${quizId}`);
+  }
+
+  getQuestionsByQuiz(quizId: number): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.apiUrl}/questions?quizId=${quizId}`);
   }
 }

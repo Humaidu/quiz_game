@@ -2,10 +2,10 @@
     <div class="quiz-questions" >
         <h2>{{ quiz.quiz_title }}</h2>
         <p class="desc">{{ quiz.description }}</p>
-        <div *ngIf="currentQuestionIndex < quiz.questions?.length; else quizSection">
-          <p>{{ quiz.questions[currentQuestionIndex].question }}</p>
+        <div *ngIf="currentQuestionIndex < questions?.length; else quizSection">
+          <p>{{ questions[currentQuestionIndex].question }}</p>
           <ul>
-            <li *ngFor="let option of quiz.questions[currentQuestionIndex].options; let i = index">
+            <li *ngFor="let option of questions[currentQuestionIndex].options; let i = index">
               <label>
                 <input type="radio" [name]="'q' + currentQuestionIndex" [(ngModel)]="answers[currentQuestionIndex]" [value]="option">
                 {{getOptionLabel(i)}}. {{ option }}
@@ -14,13 +14,13 @@
           </ul>
           <div class="pagination" >
             <button *ngIf="currentQuestionIndex > 0" (click)="prevQuestion()">Previous Question</button>
-            <button *ngIf="currentQuestionIndex < quiz.questions?.length - 1" (click)="nextQuestion()">Next Question</button>
-            <button *ngIf="currentQuestionIndex === quiz.questions?.length - 1" (click)="submitQuiz()">Submit Quiz</button>
+            <button *ngIf="currentQuestionIndex < questions?.length - 1" (click)="nextQuestion()">Next Question</button>
+            <button *ngIf="currentQuestionIndex === questions?.length - 1" (click)="submitQuiz()">Submit Quiz</button>
           </div>
         </div>
         <ng-template #quizSection>
           <div class="score">
-            Your Score: {{ score }} / {{ quiz.questions?.length }}
+            Your Score: {{ score }} / {{ questions?.length }}
           </div>
         </ng-template>
       </div>

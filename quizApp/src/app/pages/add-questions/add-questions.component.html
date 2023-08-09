@@ -2,21 +2,75 @@
   <div class="form">
     <form [formGroup]="questionForm" (ngSubmit)="createQuizAndQuestion()">
       <h1>Add a Question</h1>
-      <textarea rows="10" cols="30" placeholder="Type Question" formControlName="question"></textarea>
+      <textarea
+        rows="10"
+        cols="30"
+        placeholder="Type Question"
+        formControlName="question"
+      ></textarea>
       <label>Options</label>
       <div class="options">
-        <input type="text" class="user" placeholder="A" formControlName="optionA" />
-        <input type="text" class="user" placeholder="B" formControlName="optionB" />
-        <input type="text" class="user" placeholder="C" formControlName="optionC" />
-        <input type="text" class="user" placeholder="D" formControlName="optionD" />
+        <input
+          type="text"
+          class="user"
+          placeholder="A"
+          formControlName="optionA"
+        />
+        <input
+          type="text"
+          class="user"
+          placeholder="B"
+          formControlName="optionB"
+        />
+        <input
+          type="text"
+          class="user"
+          placeholder="C"
+          formControlName="optionC"
+        />
+        <input
+          type="text"
+          class="user"
+          placeholder="D"
+          formControlName="optionD"
+        />
       </div>
 
       <label>Answer</label>
       <div>
-        <input type="text" class="user answer" placeholder="Type Answer" formControlName="answer" />
+        <input
+          type="text"
+          class="user answer"
+          placeholder="Type Answer"
+          formControlName="answer"
+        />
       </div>
 
       <button class="login" type="submit">Add Question</button>
     </form>
+  </div>
+</div>
+
+<div class="container-second" *ngIf="quiz">
+  <div *ngIf="quiz">
+    <h2>{{ quiz.quiz_title }}</h2>
+    <p>Description: {{ quiz.description }}</p>
+    <p>Duration: {{ quiz.duration }} minutes</p>
+    <p>Category: {{ quiz.category }}</p>
+  </div>
+
+  <div *ngIf="questions && questions.length" class="quiz-questions">
+    <h3>Questions:</h3>
+    <ul>
+      <li *ngFor="let question of questions; let i = index">
+        <p><span style="font-weight: bolder;">{{i+1}}.</span> {{ question.question }}</p>
+        <ul class="options">
+          <li *ngFor="let option of question.options; let i = index" >
+            {{ getOptionLabel(i) }}. {{ option }}
+          </li>
+        </ul>
+        <p>Correct Answer: {{ question.answer }}</p>
+      </li>
+    </ul>
   </div>
 </div>
