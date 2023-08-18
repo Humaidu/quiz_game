@@ -1,7 +1,9 @@
 <div class="container">
-    <div class="quiz-questions" >
+    <div class="quiz-questions" *ngIf="selectedQuizType == 'multiple_choice' ">
         <h2>{{ quiz.quiz_title }}</h2>
-        <p class="desc">{{ quiz.description }}</p>
+        <p class="desc">Quiz Type: {{ quiz.quiz_type }}</p>
+        <p class="desc">Description: {{ quiz.description }}</p>
+        <p class="desc">Category: {{ quiz.category }}</p>
         <div *ngIf="currentQuestionIndex < questions?.length; else quizSection">
           <p>{{ questions[currentQuestionIndex].question }}</p>
           <ul>
@@ -22,7 +24,27 @@
           <div class="score">
             Your Score: {{ score }} / {{ questions?.length }}
           </div>
+          <div class="retry">
+            <button (click)="retryQuiz()">Retry</button>
+            <button routerLink="/dashboard">Dashboard</button>
+          </div>
         </ng-template>
+      </div>
+
+      <div class="quiz-questions" *ngIf="selectedQuizType == 'theory' ">
+        <h2>{{ quiz.quiz_title }}</h2>
+        <p class="desc"><span>Quiz Type:</span> {{ quiz.quiz_type }}</p>
+        <p class="desc"><span>Description: </span> {{ quiz.description }}</p>
+        <p class="desc"><span>Category:</span>  {{ quiz.category }}</p>
+        <div class="ques" *ngIf="currentQuestionIndex < questions?.length;">
+          <p><span style="font-weight: bolder;">{{currentQuestionIndex+1}}. </span>{{ questions[currentQuestionIndex].question }}</p>
+          <textarea cols="50" rows="10"></textarea>
+          <div class="pagination" >
+            <button *ngIf="currentQuestionIndex > 0" (click)="prevQuestion()">Previous Question</button>
+            <button *ngIf="currentQuestionIndex < questions?.length - 1" (click)="nextQuestion()">Next Question</button>
+            <button *ngIf="currentQuestionIndex === questions?.length - 1" (click)="submitQuizTheory()">Submit Quiz</button>
+          </div>
+        </div>
       </div>
       
       

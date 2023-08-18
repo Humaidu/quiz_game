@@ -94,6 +94,10 @@ label {
   margin-top: 8px;
 }
 
+label{
+ padding-left: 10px;
+}
+
 textarea {
   padding-left: 10px;
   width: 97%;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Question } from 'src/app/models/question';
 import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
@@ -15,23 +16,29 @@ export class QuizDetailsComponent implements OnInit {
   currentQuestionIndex: number = 0;
   score: number = 0;
   alphabets = ['A', 'B', 'C', 'D'];
+  shuffleQuestions: Question[] = [];
+  selectedQuizType: any;
 
   constructor(
     private quizService: QuizService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute, private router: Router
   ) {}
 
   ngOnInit(): void {
     this.quizId = this.route.snapshot.paramMap.get('id')!;
     this.quizService.getQuizById(this.quizId).subscribe((data) => {
       this.quiz = data;
+      this.selectedQuizType = data.quiz_type
       console.log(this.quiz);
     }, (err)=>{
       console.error('Error loading quiz:', err);
     });
 
     this.quizService.getQuestionsByQuiz(this.quizId).subscribe((questions) => {
-      this.questions = questions
+      this.shuffleQuestions = this.shuffleQuestion(questions)
+      // this.questions = questions
+      this.questions = this.shuffleQuestions;
+      
     })
   }
 
@@ -48,6 +55,26 @@ export class QuizDetailsComponent implements OnInit {
     return labels[index];
   }
   
+  retryQuiz(){
+    this.currentQuestionIndex = 0
+    this.questions = this.shuffleQuestions
+  }
+
+  private shuffleQuestion(array: any[]): any {
+    let currentIndex = array.length, randomIndex, tempValue;
+
+    while(currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--
+
+      tempValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = tempValue;
+    }
+
+    return array;
+
+  }
 
   submitQuiz() {
     this.score = 0;
@@ -58,4 +85,10 @@ export class QuizDetailsComponent implements OnInit {
     });
     this.currentQuestionIndex = this.questions.length; 
   }
+
+
+submitQuizTheory(){
+  alert('Quiz Submitted')
+}
+
 }

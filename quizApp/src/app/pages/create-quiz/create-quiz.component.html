@@ -3,8 +3,23 @@
       <form [formGroup]="quizForm" (ngSubmit)="createQuizData()">
         <h1>Create New Quiz </h1>
         <input type="text" class="user" placeholder="Quiz Title" formControlName="quiz_title" />
+        <div class="custom-select">
+          <label>Select Quiz Type</label>
+          <select formControlName="quiz_type">  
+            <option value="multiple_choice">Multiple Choice</option>
+            <option value="theory">Theory</option>
+          </select>
+        </div>
         <textarea rows="10" cols="20" placeholder="Description" formControlName="description" ></textarea>
-        <input type="text" class="user" placeholder="Category" formControlName="category" />
+        <!-- <input type="text" class="user" placeholder="Category" formControlName="category" /> -->
+        <div class="custom-select">
+          <label>Select Category </label>
+          <select formControlName="category">  
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
         <input type="number" class="user" placeholder="Duration" formControlName="duration" />
         
         <button class="login" type="submit">Create</button>

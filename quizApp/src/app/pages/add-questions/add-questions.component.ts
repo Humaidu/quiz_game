@@ -21,6 +21,7 @@ export class AddQuestionsComponent implements OnInit {
   quizId2: any;
   quiz:any;
   questions: any;
+  selectedQuizType: any;
 
   constructor(
     private quizService: QuizService,
@@ -41,6 +42,9 @@ export class AddQuestionsComponent implements OnInit {
     this.quizId2 = this.route.snapshot.paramMap.get('id')!;
     this.quizService.getQuizById(this.quizId2).subscribe((data) => {
       this.quiz = data;
+      this.selectedQuizType = data.quiz_type
+      console.log(data)
+      console.log(this.selectedQuizType)
     });
 
     this.quizService.getQuestionsByQuiz(this.quizId2).subscribe((questions) => {

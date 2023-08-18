@@ -5,6 +5,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+textarea{
+    font-family: Arial, sans-serif;
+}
+
 :root{
  --primary-color: #07634f;
  --secondary-color: #32383a;

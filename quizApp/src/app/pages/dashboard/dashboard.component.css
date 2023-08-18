@@ -41,7 +41,6 @@
   .quiz a{
     text-decoration: none;
     font-weight: 500;
-    /* color: var(--secondary-color); */
     color: #2470c7;
     margin-left: -40px;
   }

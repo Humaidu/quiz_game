@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="form">
+  <div class="form" *ngIf="selectedQuizType == 'multiple_choice'">
     <form [formGroup]="questionForm" (ngSubmit)="createQuizAndQuestion()">
       <h1>Add a Question</h1>
       <textarea
@@ -49,28 +49,61 @@
       <button class="login" type="submit">Add Question</button>
     </form>
   </div>
+
+  <div class="form" *ngIf="selectedQuizType == 'theory'">
+    <form [formGroup]="questionForm" (ngSubmit)="createQuizAndQuestion()">
+      <h1>Add a Question</h1>
+      <textarea
+        rows="10"
+        cols="50"
+        placeholder="Type Question"
+        formControlName="question"
+      ></textarea>
+      <button class="login" type="submit">Add Question</button>
+    </form>
+  </div>
 </div>
 
-<div class="container-second" *ngIf="quiz">
-  <div *ngIf="quiz">
+<div class="container-second">
+  <div *ngIf="quiz && questions && questions.length">
     <h2>{{ quiz.quiz_title }}</h2>
+    <p>Quiz Type: {{ quiz.quiz_type }}</p>
     <p>Description: {{ quiz.description }}</p>
     <p>Duration: {{ quiz.duration }} minutes</p>
     <p>Category: {{ quiz.category }}</p>
   </div>
 
-  <div *ngIf="questions && questions.length" class="quiz-questions">
-    <h3>Questions:</h3>
-    <ul>
-      <li *ngFor="let question of questions; let i = index">
-        <p><span style="font-weight: bolder;">{{i+1}}.</span> {{ question.question }}</p>
-        <ul class="options">
-          <li *ngFor="let option of question.options; let i = index" >
-            {{ getOptionLabel(i) }}. {{ option }}
-          </li>
-        </ul>
-        <p>Correct Answer: {{ question.answer }}</p>
-      </li>
-    </ul>
+  <div *ngIf="selectedQuizType == 'multiple_choice'">
+    <div *ngIf="questions && questions.length" class="quiz-questions">
+      <h3>Questions:</h3>
+      <ul>
+        <li *ngFor="let question of questions; let i = index">
+          <p>
+            <span style="font-weight: bolder">{{ i + 1 }}.</span>
+            {{ question.question }}
+          </p>
+          <ul class="options">
+            <li *ngFor="let option of question.options; let i = index">
+              {{ getOptionLabel(i) }}. {{ option }}
+            </li>
+          </ul>
+          <p>Correct Answer: {{ question.answer }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="selectedQuizType == 'theory'">
+    <div *ngIf="questions && questions.length" class="quiz-questions">
+      <h3>Questions:</h3>
+      <ul>
+        <li *ngFor="let question of questions; let i = index">
+          <p>
+            <span style="font-weight: bolder">{{ i + 1 }}.</span>
+            {{ question.question }}
+          </p>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -2,9 +2,9 @@
 .container{
     position: relative;
     width: 30%;
-    height: 530px;
+    height: 620px;
     padding: 10px 45px;
-    margin: 10vh auto;
+    margin: 12vh auto;
     background: var(--tertiary-color);
     border-radius: 10px;
   }
@@ -25,7 +25,7 @@
  }
   
   .user, .pass, .login{
-    width: 100%;
+    width: 97.5%;
     height: 50px;
     border: none;
     border-radius: 5px;
@@ -34,9 +34,35 @@
     margin-bottom: 20px;
   }
 
+  .custom-select{
+    margin-bottom: 20px;
+  }
+
+
+  .custom-select label{
+    font-size: 15px;
+    font-weight: 200;
+    color: #878484;
+    padding-left: 7px;
+    position: relative;
+    top: -3px
+
+  }
+
+  .custom-select select{
+    border: none;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 7px;
+    font-size: 16px;
+
+  }
+
+
   textarea{
     padding-left: 10px;
-    width: 100%;
+    width: 97.5%;
     height: 100px;
     border: none;
     border-radius: 5px;
@@ -50,6 +76,7 @@
   .login{
     color: #fff;
     cursor: pointer;
+    width: 100%;
     margin-top: 10px;
     background: var(--primary-color);
     transition: background 0.4s ease;

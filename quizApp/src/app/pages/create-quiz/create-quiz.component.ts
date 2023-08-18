@@ -20,6 +20,7 @@ export class CreateQuizComponent implements OnInit {
 
   quizForm = this.fb.group({
     quiz_title: ['', Validators.required],
+    quiz_type: ['', Validators.required],
     description: ['', Validators.required],
     category: ['', Validators.required],
     duration: ['', Validators.required],
