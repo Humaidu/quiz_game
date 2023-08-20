@@ -21,25 +21,28 @@ export class QuizDetailsComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
-    private route: ActivatedRoute, private router: Router
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.quizId = this.route.snapshot.paramMap.get('id')!;
-    this.quizService.getQuizById(this.quizId).subscribe((data) => {
-      this.quiz = data;
-      this.selectedQuizType = data.quiz_type
-      console.log(this.quiz);
-    }, (err)=>{
-      console.error('Error loading quiz:', err);
-    });
+    this.quizService.getQuizById(this.quizId).subscribe(
+      (data) => {
+        this.quiz = data;
+        this.selectedQuizType = data.quiz_type;
+        console.log(this.quiz);
+      },
+      (err) => {
+        console.error('Error loading quiz:', err);
+      }
+    );
 
     this.quizService.getQuestionsByQuiz(this.quizId).subscribe((questions) => {
-      this.shuffleQuestions = this.shuffleQuestion(questions)
+      this.shuffleQuestions = this.shuffleQuestion(questions);
       // this.questions = questions
       this.questions = this.shuffleQuestions;
-      
-    })
+    });
   }
 
   prevQuestion() {
@@ -54,18 +57,20 @@ export class QuizDetailsComponent implements OnInit {
     const labels = ['A', 'B', 'C', 'D'];
     return labels[index];
   }
-  
-  retryQuiz(){
-    this.currentQuestionIndex = 0
-    this.questions = this.shuffleQuestions
+
+  retryQuiz() {
+    this.currentQuestionIndex = 0;
+    this.questions = this.shuffleQuestions;
   }
 
   private shuffleQuestion(array: any[]): any {
-    let currentIndex = array.length, randomIndex, tempValue;
+    let currentIndex = array.length,
+      randomIndex,
+      tempValue;
 
-    while(currentIndex != 0) {
+    while (currentIndex != 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--
+      currentIndex--;
 
       tempValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
@@ -73,22 +78,20 @@ export class QuizDetailsComponent implements OnInit {
     }
 
     return array;
-
   }
 
   submitQuiz() {
-    this.score = 0;
-    this.questions.forEach((question: any, index: any) => {
-      if (this.answers[index] === question.answer) {
-        this.score++;
-      }
-    });
-    this.currentQuestionIndex = this.questions.length; 
+    console.log(this.selectedQuizType);
+    if (this.selectedQuizType == 'multiple_choice') {
+      this.score = 0;
+      this.questions.forEach((question: any, index: any) => {
+        if (this.answers[index] === question.answer) {
+          this.score++;
+        }
+      });
+      this.currentQuestionIndex = this.questions.length;
+    } else {
+      alert('Quiz Submitted');
+    }
   }
-
-
-submitQuizTheory(){
-  alert('Quiz Submitted')
-}
-
 }

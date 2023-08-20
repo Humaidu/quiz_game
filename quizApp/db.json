@@ -23,6 +23,7 @@
     {
       "id": 1,
       "quiz_title": "Math Quiz",
+      "quiz_type": "multiple_choice",
       "description": "Test your math skills!",
       "duration": 20,
       "category": "easy"
@@ -30,12 +31,14 @@
     {
       "id": 2,
       "quiz_title": "Science Quiz",
+      "quiz_type": "multiple_choice",
       "description": "Explore the world of science.",
       "duration": 15,
       "category": "easy"
     },
     {
       "quiz_title": "Python Quiz",
+      "quiz_type": "multiple_choice",
       "description": "multiple choice quiz",
       "category": "easy",
       "duration": 400,
@@ -43,6 +46,7 @@
     },
     {
       "quiz_title": "Scala Quiz",
+      "quiz_type": "multiple_choice",
       "description": "scala multiple choice",
       "category": "easy",
       "duration": 40,

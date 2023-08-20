@@ -1,51 +1,71 @@
 <div class="container">
-    <div class="quiz-questions" *ngIf="selectedQuizType == 'multiple_choice' ">
-        <h2>{{ quiz.quiz_title }}</h2>
-        <p class="desc">Quiz Type: {{ quiz.quiz_type }}</p>
-        <p class="desc">Description: {{ quiz.description }}</p>
-        <p class="desc">Category: {{ quiz.category }}</p>
-        <div *ngIf="currentQuestionIndex < questions?.length; else quizSection">
-          <p>{{ questions[currentQuestionIndex].question }}</p>
-          <ul>
-            <li *ngFor="let option of questions[currentQuestionIndex].options; let i = index">
-              <label>
-                <input type="radio" [name]="'q' + currentQuestionIndex" [(ngModel)]="answers[currentQuestionIndex]" [value]="option">
-                {{getOptionLabel(i)}}. {{ option }}
-              </label>
-            </li>
-          </ul>
-          <div class="pagination" >
-            <button *ngIf="currentQuestionIndex > 0" (click)="prevQuestion()">Previous Question</button>
-            <button *ngIf="currentQuestionIndex < questions?.length - 1" (click)="nextQuestion()">Next Question</button>
-            <button *ngIf="currentQuestionIndex === questions?.length - 1" (click)="submitQuiz()">Submit Quiz</button>
-          </div>
-        </div>
-        <ng-template #quizSection>
-          <div class="score">
-            Your Score: {{ score }} / {{ questions?.length }}
-          </div>
-          <div class="retry">
-            <button (click)="retryQuiz()">Retry</button>
-            <button routerLink="/dashboard">Dashboard</button>
-          </div>
-        </ng-template>
+  <div class="quiz-questions">
+    <h2>{{ quiz.quiz_title }}</h2>
+    <p class="desc">Quiz Type: {{ quiz.quiz_type }}</p>
+    <p class="desc">Description: {{ quiz.description }}</p>
+    <p class="desc">Category: {{ quiz.category }}</p>
+    <div *ngIf="currentQuestionIndex < questions?.length; else quizSection">
+      <div *ngIf="selectedQuizType == 'multiple_choice'; else theorySection">
+        <p>{{ questions[currentQuestionIndex].question }}</p>
+        <ul>
+          <li
+            *ngFor="
+              let option of questions[currentQuestionIndex].options;
+              let i = index
+            "
+          >
+            <label>
+              <input
+                type="radio"
+                [name]="'q' + currentQuestionIndex"
+                [(ngModel)]="answers[currentQuestionIndex]"
+                [value]="option"
+              />
+              {{ getOptionLabel(i) }}. {{ option }}
+            </label>
+          </li>
+        </ul>
       </div>
 
-      <div class="quiz-questions" *ngIf="selectedQuizType == 'theory' ">
-        <h2>{{ quiz.quiz_title }}</h2>
-        <p class="desc"><span>Quiz Type:</span> {{ quiz.quiz_type }}</p>
-        <p class="desc"><span>Description: </span> {{ quiz.description }}</p>
-        <p class="desc"><span>Category:</span>  {{ quiz.category }}</p>
-        <div class="ques" *ngIf="currentQuestionIndex < questions?.length;">
-          <p><span style="font-weight: bolder;">{{currentQuestionIndex+1}}. </span>{{ questions[currentQuestionIndex].question }}</p>
-          <textarea cols="50" rows="10"></textarea>
-          <div class="pagination" >
-            <button *ngIf="currentQuestionIndex > 0" (click)="prevQuestion()">Previous Question</button>
-            <button *ngIf="currentQuestionIndex < questions?.length - 1" (click)="nextQuestion()">Next Question</button>
-            <button *ngIf="currentQuestionIndex === questions?.length - 1" (click)="submitQuizTheory()">Submit Quiz</button>
-          </div>
+      <div class="pagination">
+        <div *ngIf="currentQuestionIndex > 0" (click)="prevQuestion()">
+          <span style="color: #07634f"
+            ><i class="fa-solid fa-chevron-left"></i
+            ><i class="fa-solid fa-chevron-left"></i
+          ></span>
         </div>
+        <div
+          *ngIf="currentQuestionIndex < questions?.length - 1"
+          (click)="nextQuestion()"
+        >
+          <span style="color: #07634f"
+            ><i class="fa-solid fa-chevron-right"></i
+            ><i class="fa-solid fa-chevron-right"></i
+          ></span>
+        </div>
+        <button
+          *ngIf="currentQuestionIndex === questions?.length - 1"
+          (click)="submitQuiz()"
+        >
+          Submit Quiz
+        </button>
       </div>
-      
-      
+    </div>
+
+    <ng-template #quizSection>
+      <div class="score">Your Score: {{ score }} / {{ questions?.length }}</div>
+      <div class="retry">
+        <button (click)="retryQuiz()">Retry</button>
+        <button routerLink="/dashboard">Dashboard</button>
+      </div>
+    </ng-template>
+
+    <ng-template #theorySection>
+      <p>
+        <span style="font-weight: bolder">{{ currentQuestionIndex + 1 }}. </span
+        >{{ questions[currentQuestionIndex].question }}
+      </p>
+      <textarea cols="50" rows="10"></textarea>
+    </ng-template>
+  </div>
 </div>

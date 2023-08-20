@@ -7,11 +7,9 @@
 
 <div class="quiz">
   <h2>Available Quizzes</h2>
-  <div class="available">
-    <ul>
-      <li *ngFor="let quiz of quizzes">
-        <a [routerLink]="['/quiz-details', quiz.id]"> {{quiz.quiz_title}} </a>
-      </li>
-    </ul>
+  <div class="available-quiz" >
+    <div *ngFor="let quiz of quizzes" class="quiz-card">
+      <div class="quiz_text" [routerLink]="['/quiz-details', quiz.id]"> {{ quiz.quiz_title }} </div>
+    </div>
   </div>
 </div>
